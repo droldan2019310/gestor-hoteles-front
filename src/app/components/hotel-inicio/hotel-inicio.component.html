@@ -1,0 +1,30 @@
+
+<span class="slogan">Tu mejor opción en Hoteles de toda Guatemala</span>
+<br>
+<h1 class="nombreHotel">Nombre Hotel</h1>
+
+<p>CAROUSEL A IMPLEMENTAR</p>
+<body class="container pb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" (click)="changeStatus(1)">Habitaciones <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="changeStatus(2)">Eventos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="changeStatus(3)">Servicios</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <app-habitaciones *ngIf="navbarStatus==1"></app-habitaciones>
+    <app-eventos *ngIf="navbarStatus==2"></app-eventos>
+    <app-servicios *ngIf="navbarStatus==3"></app-servicios>
+</body>
+<app-footer></app-footer>
