@@ -1,28 +1,11 @@
-.tituloHome{
-    text-align: center;
-    font-family:  Roboto;
-    color: #C62828;
-}
-
-/* BASIC */
-
-html {
-    background-color: #56baed;
-  }
-  
-  body {
+body {
+    font-family: "Poppins", sans-serif;
     padding: 0;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  }
-  
-  a {
-    color: #92badd;
-    display:inline-block;
-    text-decoration: none;
-    font-weight: 400;
-  }
-  
+}
+
+
   .titulo2 {
     text-align: center;
     font-size: 16px;
@@ -33,10 +16,23 @@ html {
     color: #E53935;
   }
   
-  
-  
-  /* STRUCTURE */
-  
+  .slogan{
+    color: #932323;
+    font-family: Berlin Sans FB;
+    font-size: 1.5rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nombreHotel{
+    color: #C62828;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
   .wrapper {
     display: flex;
     align-items: center;
@@ -46,7 +42,14 @@ html {
     min-height: 100%;
     padding: 20px;
   }
-  
+
+  .navA{
+      position: absolute;
+      left: 5px;
+      height: 80%;
+      display: flex;
+      align-items: center;
+  }
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
@@ -70,7 +73,16 @@ html {
   
   
   
-
+  /* TABS */
+  
+  h2.inactive {
+    color: #cccccc;
+  }
+  
+  h2.active {
+    color: #0d0d0d;
+    border-bottom: 2px solid #5fbae9;
+  }
   
   
   
@@ -114,7 +126,7 @@ html {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
-    padding: 15px 22px;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -244,7 +256,9 @@ html {
     width: 100%;
   }
   
-  
+  h1{
+      color:#60a0ff;
+  }
   
   /* OTHERS */
   
@@ -253,19 +267,6 @@ html {
   } 
   
   #icon {
-    width:60%;
+    width:30%;
   }
-  .color{
-    color: #C62828;
-    font-weight: bolder;
-  } 
-
-  .Disponible{
-      color: #00B74A;
-      text-align: left;
-  }
-  .verMas{
-      font-size: 18px;
-      color: #C62828 !important;
-      font-weight: bolder;
-  }
+  

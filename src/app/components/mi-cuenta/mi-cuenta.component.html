@@ -1,9 +1,7 @@
-
 <span class="slogan">Tu mejor opción en Hoteles de toda Guatemala</span>
 <br>
-<h1 class="nombreHotel">Nombre Hotel</h1>
+<h1 class="nombreHotel">Mi Cuenta</h1>
 
-<p>CAROUSEL A IMPLEMENTAR</p>
 <body class="container pb-5">
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,18 +10,14 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" (click)="changeStatus(1)">Habitaciones <span class="sr-only">(current)</span></a>
+              <a class="nav-link" (click)="changeNav(1)">Reservaciones <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="changeStatus(2)">Eventos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="changeStatus(3)">Servicios</a>
+              <a class="nav-link" (click)="changeNav(2)">Mi Cuenta</a>
             </li>
           </ul>
         </div>
     </nav>
-    <app-habitaciones *ngIf="navbarStatus==1"></app-habitaciones>
-    <app-eventos *ngIf="navbarStatus==2"></app-eventos>
-    <app-servicios *ngIf="navbarStatus==3"></app-servicios>
+    <app-reservaciones *ngIf="navStatus==1"></app-reservaciones>
+    <app-editar-cuenta *ngIf="navStatus==2"></app-editar-cuenta>
 </body>
