@@ -1,0 +1,53 @@
+* {
+   box-sizing: border-box; 
+   margin: 00PX;
+   padding: 00PX;
+}
+
+h1{
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+.menu .NombreTitulo {
+    color: red;
+    text-decoration: none;
+}
+
+.menu {
+    width: 90%;
+    margin: auto;
+}
+
+/*Cambiando los estilos de la navegación*/
+.nav-main .NombreTitulo{
+    font-size: 35px;
+}
+
+.nav-main {
+    font-family: Roboto;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-main ul  {
+    display: flex;
+}
+
+.nav-main ul p {
+    padding: 10px;
+}
+
+.nav-menu2{
+    margin-top: 0.75%;
+}
+
+hr {
+    background-color: red;
+    width: 90%;
+    margin: auto;
+}
