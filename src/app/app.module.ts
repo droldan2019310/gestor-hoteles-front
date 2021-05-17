@@ -16,6 +16,9 @@ import { ServiciosComponent } from './components/servicios/servicios.component';
 import { FormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule  } from "@angular/platform-browser/animations";
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ReservacionComponent } from './components/reservacion/reservacion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,10 @@ import {BrowserAnimationsModule  } from "@angular/platform-browser/animations";
     HotelInicioComponent,
     HabitacionesComponent,
     EventosComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    LoginComponent,
+    RegisterComponent,
+    ReservacionComponent
   ],
   imports: [
     BrowserModule,
