@@ -1,48 +1,32 @@
-* {
-   box-sizing: border-box; 
-   margin: 00PX;
-   padding: 00PX;
+
+.navTop{
+    background-color: transparent !important;
+    position: absolute;
+    z-index: 4;
 }
 
-h1{
-    color: black;
+.nav-link{
+    color: white !important;
 }
 
-a {
-    color: white;
+.color{
+    color: white !important;
 }
-
-.menu .NombreTitulo {
-    color: red;
-    text-decoration: none;
+.text-color{
+    color: #262626 !important;
 }
-
-.menu {
-    width: 90%;
-    margin: auto;
+.text-muted{
+    color: #6c757d  !important;
 }
-
-/*Cambiando los estilos de la navegación*/
-.nav-main .NombreTitulo{
-    font-size: 35px;
+.navbar-nav{
+    position: absolute;
+    right: 10px;
 }
-
-.nav-main {
-    font-family: Berlin Sans FB;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
+.navFixed{
+    background-color: white;
+    position: fixed;
+    z-index: 4;
+    width: 100%;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }
-
-.nav-main li  {
-    display: flex;
-}
-
-.nav-main li a {
-    padding: 10px;
-}
-
-.nav-item{
-    margin-top: 0.75%;
-}
-

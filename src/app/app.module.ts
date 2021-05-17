@@ -22,6 +22,9 @@ import { ReservacionComponent } from './components/reservacion/reservacion.compo
 import { MiCuentaComponent } from './components/mi-cuenta/mi-cuenta.component';
 import { ReservacionesComponent } from './components/mi-cuenta/reservaciones/reservaciones.component';
 import { EditarCuentaComponent } from './components/mi-cuenta/editar-cuenta/editar-cuenta.component';
+import { InicioAdminComponent } from './componentsAdmin/inicio-admin/inicio-admin.component';
+import { HotelesComponent } from './componentsAdmin/hoteles/hoteles.component';
+import { UsuariosComponent } from './componentsAdmin/usuarios/usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,10 @@ import { EditarCuentaComponent } from './components/mi-cuenta/editar-cuenta/edit
     ReservacionComponent,
     MiCuentaComponent,
     ReservacionesComponent,
-    EditarCuentaComponent
+    EditarCuentaComponent,
+    InicioAdminComponent,
+    HotelesComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
