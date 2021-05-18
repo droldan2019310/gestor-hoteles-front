@@ -8,6 +8,7 @@ import { ReservacionesComponent } from './components/mi-cuenta/reservaciones/res
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
+import { InicioAdminComponent } from './componentsAdmin/inicio-admin/inicio-admin.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'reservacion',component:ReservacionComponent},
   {path:'miCuenta',component:MiCuentaComponent},
   {path: 'reservaciones', component:ReservacionesComponent},
+  {path: 'InicioAdmin', component:InicioAdminComponent},
   {path:'**',component:NotFoundComponent}
 ];
 
