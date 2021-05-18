@@ -1,0 +1,93 @@
+footer{
+    margin: auto;
+    background-color: #700707;
+    color: #FFFF;
+    padding-bottom: 2%;
+}
+
+
+.header {
+    margin-top: -10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.card{
+    color:#700707 ;
+}
+form {
+    /* Centrar el formulario en la página */
+    margin: 0 auto;
+    width: auto;
+    /* Esquema del formulario */
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  form li + li {
+    margin-top: 1em;
+  }
+  
+  label {
+    /* Tamaño y alineación uniforme */
+    display: inline-block;
+    width: 90px;
+    text-align: left;
+  }
+  
+  input,
+  textarea {
+    /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+       Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
+    font: 1em sans-serif;
+  
+    /* Tamaño uniforme del campo de texto */
+    width: 300px;
+    box-sizing: border-box;
+  
+    /* Hacer coincidir los bordes del campo del formulario */
+    border: 1px solid #999;
+    border-radius: 10px 10px 10px 10px;
+  }
+  
+  input:focus,
+  textarea:focus {
+    /* Destacado adicional para elementos que tienen el cursor */
+    border-color: #000;
+  }
+  
+  textarea {
+    /* Alinear los campos de texto multilínea con sus etiquetas */
+    vertical-align: top;
+  
+    /* Proporcionar espacio para escribir texto */
+    height: 5em;
+  }
+  
+  .button {
+    /* Alinear los botones con los campos de texto */
+    padding-left: 90px; /* mismo tamaño que los elementos de la etiqueta */
+  }
+  
+  button {
+    /* Este margen adicional representa aproximadamente el mismo espacio que el espacio
+       entre las etiquetas y sus campos de texto */
+    margin-left: .5em;
+    border-radius: 10px 10px 10px 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 33px;
+    padding-right: 33px;
+    background-color: #56baed;
+    color: #FFFF;
+    border: 0;
+  }
