@@ -1,8 +1,9 @@
-<span class="slogan">Tu mejor opción en Hoteles de toda Guatemala</span>
-<br>
-<h1 class="nombreHotel">Mi Cuenta</h1>
 
-<body class="container pb-5">
+<app-carousel class="car"></app-carousel>
+
+
+
+<body class="container pb-5 pos">
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -18,6 +19,8 @@
           </ul>
         </div>
     </nav>
+    <span class="slogan">Tu mejor opción en Hoteles de toda Guatemala</span>
+    <br>
     <app-reservaciones *ngIf="navStatus==1"></app-reservaciones>
     <app-editar-cuenta *ngIf="navStatus==2"></app-editar-cuenta>
 </body>

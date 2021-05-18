@@ -25,6 +25,7 @@ import { EditarCuentaComponent } from './components/mi-cuenta/editar-cuenta/edit
 import { InicioAdminComponent } from './componentsAdmin/inicio-admin/inicio-admin.component';
 import { HotelesComponent } from './componentsAdmin/hoteles/hoteles.component';
 import { UsuariosComponent } from './componentsAdmin/usuarios/usuarios.component';
+import { HotelComponent } from './components/hotel/hotel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { UsuariosComponent } from './componentsAdmin/usuarios/usuarios.component
     EditarCuentaComponent,
     InicioAdminComponent,
     HotelesComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    HotelComponent
   ],
   imports: [
     BrowserModule,

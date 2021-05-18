@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { HotelInicioComponent } from './components/hotel-inicio/hotel-inicio.component';
+import { HotelComponent } from './components/hotel/hotel.component';
 import { LoginComponent } from './components/login/login.component';
 import { MiCuentaComponent } from './components/mi-cuenta/mi-cuenta.component';
 import { ReservacionesComponent } from './components/mi-cuenta/reservaciones/reservaciones.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'miCuenta',component:MiCuentaComponent},
   {path: 'reservaciones', component:ReservacionesComponent},
   {path: 'InicioAdmin', component:InicioAdminComponent},
+  {path: 'Hoteles', component:HotelComponent},
   {path:'**',component:NotFoundComponent}
 ];
 
