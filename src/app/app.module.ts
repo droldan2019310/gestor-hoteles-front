@@ -26,6 +26,8 @@ import { InicioAdminComponent } from './componentsAdmin/inicio-admin/inicio-admi
 import { HotelesComponent } from './componentsAdmin/hoteles/hoteles.component';
 import { UsuariosComponent } from './componentsAdmin/usuarios/usuarios.component';
 import { HotelComponent } from './components/hotel/hotel.component';
+import { GraficasComponent } from './componentsAdmin/graficas/graficas.component';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,14 +50,15 @@ import { HotelComponent } from './components/hotel/hotel.component';
     InicioAdminComponent,
     HotelesComponent,
     UsuariosComponent,
-    HotelComponent
+    HotelComponent,
+    GraficasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

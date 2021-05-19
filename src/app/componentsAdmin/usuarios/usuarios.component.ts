@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit {
-
-  constructor() { }
+  sidebarStatus;
+  constructor() {
+    this.sidebarStatus=1;
+   }
 
   ngOnInit(): void {
   }
-
+  status(status){
+    this.sidebarStatus= status;
+  }
 }

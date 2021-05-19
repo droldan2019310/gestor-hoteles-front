@@ -1,1 +1,153 @@
-<p>usuarios works!</p>
+<div class="container row m-0 p-0">
+    <div class="col-lg-3 color">
+        <nav class="navbar navbar-expand-lg  w-100">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-lg-12">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav d-block">
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="status(1)">Usuarios Registrados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="status(2)">Agregar Usuario</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            
+        </nav>
+    </div>
+    <div class="col-lg-9 mt-4 mb-4 row" *ngIf="sidebarStatus==1">
+        <div class="card mr-2 ml-2" style="width: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de Usuario</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Correo Electronico: example@gmail.com</h6>
+              <p class="card-text">Usuario: username</p>
+              <h6 class="card-subtitle mb-2 text-muted">Telefono: 52145215</h6>
+            </div>
+        </div>
+        <div class="card mr-2" style="width: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de Usuario</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Correo Electronico: example@gmail.com</h6>
+              <p class="card-text">Usuario: username</p>
+              <h6 class="card-subtitle mb-2 text-muted">Telefono: 52145215</h6>
+            </div>
+        </div>
+        <div class="card mr-2" style="width: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de Usuario</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Correo Electronico: example@gmail.com</h6>
+              <p class="card-text">Usuario: username</p>
+              <h6 class="card-subtitle mb-2 text-muted">Telefono: 52145215</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 mt-4 mb-4" *ngIf="sidebarStatus==2">
+        <form class="row justify-content-center mr-3 ml-3">
+            <div class="col-lg-12 row justify-content-center m-0 p-0">
+                <input type="text" id="login" class="fadeIn second col-lg-5" name="login" placeholder="Nombre">
+                <input type="text" id="login" class="fadeIn second col-lg-5" name="login" placeholder="Apellido">
+            </div>
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Teléfono">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Contraseña">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Confirma tu contraseña">
+          <select
+           class="fadeIn second" >
+              <option>Role de Usuario</option>
+              <option>Datos</option>
+              <option>Datos</option>
+          </select>
+          <input type="submit" class="fadeIn fourth btn" value="Registrar Hotel">
+        </form>
+    </div>
+</div>
+
+<!--  modal para editar -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="EditLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="EditLabel">Editar Hotel</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="row justify-content-center mr-3 ml-3">
+                
+                <input type="text" id="login" class="fadeIn second " name="login" placeholder="Nombre del Hotel">
+                <input type="text" id="login" class="fadeIn second " name="login" placeholder="Telefono del Hotel">
+                
+              <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
+              <select class="fadeIn second" >
+                  <option>Administrador del Hotel</option>
+                  <option>Datos</option>
+                  <option>Datos</option>
+              </select>
+              <textarea class="fadeIn second"  placeholder="Dirección del Hotel"></textarea>
+              <input type="file"  class="fadeIn third" name="login" placeholder="password"><br>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" style="color: white;" class="btn btn-warning">Editar Hotel</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--  modal para Agregar habitación -->
+<div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="AgregarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="AgregarLabel">Agregar Habitación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="row justify-content-center mr-3 ml-3">
+                
+                <input type="text" id="login" class="fadeIn second " name="login" placeholder="Nombre de la habitación">
+                <input type="text" id="login" class="fadeIn second " name="login" placeholder="Precio de la habitación">
+              <textarea class="fadeIn second"  placeholder="Breve descripción de la habitación"></textarea>
+              <input type="file"  class="fadeIn third" name="login" placeholder="password"><br>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Agregar Habitación</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--  modal para eliminar -->
+<div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="EliminarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="EliminarLabel">Eliminar Hotel</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span class="text-danger">¿Está seguro que desea eliminar este hotel?</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Eliminar Hotel</button>
+        </div>
+      </div>
+    </div>
+</div>

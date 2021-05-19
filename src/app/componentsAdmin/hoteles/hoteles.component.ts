@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hoteles.component.css']
 })
 export class HotelesComponent implements OnInit {
-
-  constructor() { }
+  sidebarStatus;
+  constructor() { 
+    
+    this.sidebarStatus = 1;
+  }
 
   ngOnInit(): void {
   }
 
+  status(status){
+    this.sidebarStatus = status;
+  }
 }

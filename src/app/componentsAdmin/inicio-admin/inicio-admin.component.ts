@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio-admin.component.css']
 })
 export class InicioAdminComponent implements OnInit {
-
-  constructor() { }
+  navbarStatus;
+  constructor() {
+    this.navbarStatus=1;
+   }
 
   ngOnInit(): void {
   }
-
+  changeStatus(status){
+    this.navbarStatus=status;
+  }
 }
