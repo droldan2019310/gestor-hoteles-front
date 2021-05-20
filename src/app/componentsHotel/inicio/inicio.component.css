@@ -1,50 +1,24 @@
-.tituloHome{
-    text-align: center;
-    font-family:  Roboto;
-    color: #C62828;
+.roja{
+    background-color: #C62828;
+    margin:1rem;
 }
 
-
-.car{
-  position: relative;
-  z-index: 1;
+.verde{
+    background-color: #00B74A ;
+    margin:1rem;
 }
-.pos{
-  position: relative;
-  margin-top: -60px;
-  z-index: 2;
-}
-/* BASIC */
 
-html {
-    background-color: #56baed;
-  }
-  
-  body {
-    padding: 0;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  }
-  
-  a {
-    color: #92badd;
-    display:inline-block;
-    text-decoration: none;
-    font-weight: 400;
-  }
-  
-  .titulo2 {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display:inline-block;
-    margin: 40px 8px 10px 8px; 
-    color: #E53935;
-  }
-  
-  
-  
+.amarillo{
+    background-color: #FFCA28;
+    margin:1rem;
+}
+
+.texto{
+    font-family: Berlin Sans FB;
+    font-size: 2rem;
+    color: white;
+}
+
   /* STRUCTURE */
   
   .wrapper {
@@ -63,8 +37,6 @@ html {
     background: #fff;
     padding: 30px;
     position: relative;
-    margin-right: 1rem !important;
-    margin-left: 1rem !important;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -102,7 +74,6 @@ html {
     box-shadow: 0 10px 30px 0 #551313;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -111,7 +82,7 @@ html {
   }
   
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #551313;
+    background-color: #39ace7;
   }
   
   input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -122,7 +93,7 @@ html {
     transform: scale(0.95);
   }
   
-  input[type=text] {
+  input[type=text], select {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -131,8 +102,6 @@ html {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 5px;
-    width: 85%;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -280,10 +249,4 @@ html {
       font-size: 18px;
       color: #C62828 !important;
       font-weight: bolder;
-  }
-
-  @media (max-width: 600px) {
-    .pos {
-      margin-top: 0 !important;
-    }
   }

@@ -59,6 +59,8 @@ html {
     padding: 30px;
     position: relative;
     padding: 0px;
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
@@ -82,7 +84,7 @@ html {
   /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #56baed;
+    background-color: #730C0C;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -91,8 +93,8 @@ html {
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-box-shadow: 0 10px 30px 0 #551313;
+    box-shadow: 0 10px 30px 0 #551313;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     margin: 5px 20px 40px 20px;
@@ -104,7 +106,7 @@ html {
   }
   
   .botones{
-    background-color: #56baed;
+    background-color: #730C0C;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -113,8 +115,8 @@ html {
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-box-shadow: 0 10px 30px 0 #551313;
+    box-shadow: 0 10px 30px 0 #551313;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     margin: 5px 20px 40px 20px;
@@ -124,8 +126,8 @@ html {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #39ace7;
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, .botones:hover  {
+    background-color: #551313;
   }
   
   input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {

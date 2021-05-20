@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   }
   
   changeClass(){
+
     let scrollPosition = window.pageYOffset;
     if(scrollPosition != 0){
       if(this.showFixed == false ){
@@ -27,5 +28,10 @@ export class NavbarComponent implements OnInit {
         this.showFixed = false;
       }
     }
+
+    
+  }
+  quitarClase(){
+    document.getElementById("navbarNav").classList.remove("show");
   }
 }

@@ -21,6 +21,7 @@ body {
     font-family: Berlin Sans FB;
     font-size: 1.5rem;
     display: flex;
+    text-align: center;
     justify-content: center;
     width: 100%;
   }

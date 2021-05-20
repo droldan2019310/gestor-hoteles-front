@@ -18,9 +18,8 @@
 .text-muted{
     color: #6c757d  !important;
 }
-.navbar-nav{
-    position: absolute;
-    right: 10px;
+.w-72{
+    width: 72%;
 }
 .navFixed{
     background-color: white;
@@ -30,3 +29,19 @@
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }
+
+@media (max-width: 600px) {
+    .w-72 {
+      width: 100% !important;
+    }
+    .navTop{
+        position: static;
+        
+    }
+    .color{
+        color: #262626 !important;
+    }
+    .nav-link{
+        color: #6c757d !important;
+    }
+  }

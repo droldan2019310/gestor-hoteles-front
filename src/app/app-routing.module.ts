@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
 import { InicioAdminComponent } from './componentsAdmin/inicio-admin/inicio-admin.component';
+import { AdminHotelComponent } from './componentsHotel/admin-hotel/admin-hotel.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'reservaciones', component:ReservacionesComponent},
   {path: 'InicioAdmin', component:InicioAdminComponent},
   {path: 'Hoteles', component:HotelComponent},
+  {path: 'AdminHotel', component:AdminHotelComponent},
   {path:'**',component:NotFoundComponent}
 ];
 
