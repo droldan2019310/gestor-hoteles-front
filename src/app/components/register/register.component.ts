@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { User } from 'src/app/models/user';
 import { RestUserService } from 'src/app/services/restUser/rest-user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   public passwordC = "";
   private readonly notifier;
 
-  constructor(private userService: RestUserService, private notifierService:NotifierService) { 
+  constructor(private userService: RestUserService, private notifierService:NotifierService, private router:Router) { 
     this.user = new User('','','','','','','','ROLE_USER');
     this.notifier = notifierService;
   }
@@ -30,6 +31,7 @@ export class RegisterComponent implements OnInit {
           this.user = new User('','','','','','','','ROLE_USER');
           this.notifier.notify('success', res.message);
           register.reset();
+          this.router.navigateByUrl("login");
         }else{
           this.notifier.notify('warning', res.message);
         }

@@ -27,7 +27,7 @@
           <input type="text" #username="ngModel" required id="username" [(ngModel)]="user.username" class="fadeIn second" name="username" placeholder="userName">
           <br><span *ngIf="!username.valid && username.touched">Campo Obligatorio</span>
           
-          <input type="text" #email="ngModel" required id="email" [(ngModel)]="user.email" class="fadeIn second" name="email" placeholder="email">
+          <input type="email" #email="ngModel" required id="email" [(ngModel)]="user.email" class="fadeIn second" name="email" placeholder="email">
           <br><span *ngIf="!email.valid && email.touched">Campo Obligatorio</span>
           
           <input type="password" #password="ngModel" required id="password" [(ngModel)]="user.password" class="fadeIn third" name="password" placeholder="password">
