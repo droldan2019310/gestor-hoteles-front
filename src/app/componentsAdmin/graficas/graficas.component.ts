@@ -21,9 +21,18 @@ export class GraficasComponent implements OnInit {
              {data: [59], label: 'Hotel B'},
              {data: [80], label: 'Hotel C'}
   ];
-  constructor() { }
 
-  ngOnInit(): void {
+  public count;
+
+  constructor() { 
+    this.getCount()
   }
 
+  ngOnInit(): void {
+    this.getCount()
+  }
+
+  getCount(){
+    this.count = JSON.parse(localStorage.getItem("count"));
+  }
 }

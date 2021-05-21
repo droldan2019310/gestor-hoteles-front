@@ -15,10 +15,12 @@ export class InicioAdminComponent implements OnInit {
     this.navbarStatus=1;
     notifier: notifierService;
     this.getUser();
+    this.getCountUsers();
    }
 
   ngOnInit(): void {
     this.getHotels();
+    this.getCountUsers();
   }
 
   getHotels(){
@@ -45,7 +47,15 @@ export class InicioAdminComponent implements OnInit {
       this.notifier.notify("error", error.error.message);
     })
   }
-
+  getCountUsers(){
+    this.restUser.countUser().subscribe((res:any)=>{
+      if(res.countUsers){
+        localStorage.setItem("count", JSON.stringify(res.countUsers))
+      }else{
+        localStorage.setItem("count", "0");
+      }
+    })
+  }
   changeStatus(status){
     this.navbarStatus=status;
   }

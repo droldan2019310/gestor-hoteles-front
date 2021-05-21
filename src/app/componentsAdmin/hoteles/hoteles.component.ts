@@ -61,14 +61,12 @@ export class HotelesComponent implements OnInit {
         if(res.hotelSaved){
           this.getHotels();
           this.hotel = res.hotelSaved;
-          this.setUser(res.hotelSaved._id,this.userSelected);
           
           this.setImages(res.hotelSaved._id,this.filesToUpload);
           this.setImages(res.hotelSaved._id,this.filesToUpload2);
           this.setImages(res.hotelSaved._id,this.filesToUpload3);
-          this.getHotelsRes();
-          this.getHotels();
-          
+          this.setUser(res.hotelSaved._id,this.userSelected);
+         
           form.reset();
           this.notifier.notify("success",res.message);
         }else{
@@ -129,9 +127,12 @@ export class HotelesComponent implements OnInit {
   }
 
   setImages(idHotel,files){
+    this.getHotelsRes();
+    this.getHotels();
     this.restHotel.setImage(idHotel,[],files,this.token, 'image')
     .then((res:any)=>{
       if(res.hotel){
+        
       }else{
         this.notifier.notify("error",res.message);
       }

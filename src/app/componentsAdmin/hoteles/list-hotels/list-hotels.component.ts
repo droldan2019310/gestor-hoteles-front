@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Hotel } from 'src/app/models/Hotel';
 import { User } from 'src/app/models/user';
 import { RestHotelService } from 'src/app/services/restHotel/rest-hotel.service';
@@ -13,7 +13,7 @@ import { Room } from 'src/app/models/room';
   templateUrl: './list-hotels.component.html',
   styleUrls: ['./list-hotels.component.css']
 })
-export class ListHotelsComponent implements OnInit {
+export class ListHotelsComponent implements OnInit, DoCheck {
   hotel:Hotel;
   user:User;
   token:string;
@@ -39,6 +39,12 @@ export class ListHotelsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getHotelsRes();
+    this.getHotels();
+  }
+
+  ngDoCheck(){
+    this.getHotels();
   }
   getHotels(){
     this.hotels = JSON.parse(localStorage.getItem("hotels"));
@@ -66,6 +72,8 @@ export class ListHotelsComponent implements OnInit {
     this.restHotel.editHotel(this.hotelSelected._id,this.hotelSelected).subscribe((res:any)=>{
       if(res.hotelUpdate){
         this.notifier.notify("success",res.message);
+      
+        this.getHotelsRes();
         this.getHotels();
       }else{
         this.notifier.notify("warning",res.message);
@@ -83,6 +91,7 @@ export class ListHotelsComponent implements OnInit {
       if(res.roomSaved){
         this.notifier.notify("success",res.message);
         this.setImageRoom(res.roomSaved._id,this.fileRoom);
+        this.getHotelsRes();
         this.getHotels();
       }else{
         this.notifier.notify("warning",res.message);

@@ -35,6 +35,7 @@ export class UsuariosComponent implements OnInit {
         form.reset();
         this.getUserUp();
         this.getUser();
+        this.getCountUsers();
       }else{
         this.notifier.notify("warning", res.message);
       }
@@ -56,6 +57,15 @@ export class UsuariosComponent implements OnInit {
       }
     }, error=>{
       this.notifier.notify("error", error.error.message);
+    })
+  }
+  getCountUsers(){
+    this.restUser.countUser().subscribe((res:any)=>{
+      if(res.countUsers){
+        localStorage.setItem("count", JSON.stringify(res.countUsers))
+      }else{
+        localStorage.setItem("count", "0");
+      }
     })
   }
 }
