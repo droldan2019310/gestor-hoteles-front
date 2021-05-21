@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Hotel } from 'src/app/models/Hotel';
+import { User } from 'src/app/models/user';
+import { RestHotelService } from 'src/app/services/restHotel/rest-hotel.service';
+import { RestUserService } from 'src/app/services/restUser/rest-user.service';
+import { NotifierService } from 'angular-notifier';
+
 
 @Component({
   selector: 'app-hoteles',
@@ -7,15 +13,107 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelesComponent implements OnInit {
   sidebarStatus;
-  constructor() { 
-    
+  hotel:Hotel;
+  user:User;
+  token:string;
+  usersAdmin:[];
+  userSelected:User;
+  public filesToUpload:Array<File>;
+  public filesToUpload2:Array<File>;
+  public filesToUpload3:Array<File>;
+  private readonly notifier;
+
+  constructor(private restHotel: RestHotelService, private restUser: RestUserService, private notifierService:NotifierService,) { 
+    this.hotel = new Hotel('','',null,'','','',[],[],[],[]);
+    this.user = restUser.getUser();
+    this.token = restUser.getToken();
     this.sidebarStatus = 1;
+    this.userSelected = new User('','','','','','','','');
+    this.notifier = notifierService;
   }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
   status(status){
     this.sidebarStatus = status;
+  }
+  
+  onSubmit(form){
+
+      this.restHotel.saveHotel(this.hotel).subscribe((res:any)=>{
+        
+        if(res.hotelSaved){
+          this.hotel = res.hotelSaved;
+          this.setUser(res.hotelSaved._id,this.userSelected);
+          this.setImages(res.hotelSaved._id,this.filesToUpload);
+          this.setImages(res.hotelSaved._id,this.filesToUpload2);
+          this.setImages(res.hotelSaved._id,this.filesToUpload3);
+          form.reset();
+          this.notifier.notify("success",res.message);
+        }else{
+          this.notifier.notify("warning",res.message);
+          
+        }
+      },  
+        error=>{
+            this.notifier.notify("error",error.error.message);
+        }
+      )
+  }
+
+  getUsers(){
+    this.restHotel.getUsersHotel().subscribe((res:any)=>{
+      if(res.users){
+        this.usersAdmin = res.users;
+      }else{
+        this.notifier.notify("error",res.message);
+      }
+    },
+      error=>{
+        this.notifier.notify("error", error.error.message);
+      }
+    )
+  }
+
+  setUser(idHotel, userSelected){
+    console.log(idHotel);
+    console.log(userSelected);
+    this.restHotel.setUserHotel(idHotel,userSelected).subscribe((res:any)=>{
+      if(res.pushUser){
+        console.log("hecho")
+      }else{
+        this.notifier.notify("error",res.message);
+        console.log("error 1")
+      }
+    },
+      error=>{
+        this.notifier.notify("error", error.error.message);
+      }
+    )
+  }
+
+  setImages(idHotel,files){
+    this.restHotel.setImage(idHotel,[],files,this.token, 'image')
+    .then((res:any)=>{
+      if(res.hotel){
+          console.log("hecho")
+      }else{
+        this.notifier.notify("error",res.message);
+      }
+    })
+  }
+
+  fileChange(fileInput){
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+
+  fileChange2(fileInput){
+    this.filesToUpload2 = <Array<File>>fileInput.target.files;
+  }
+
+  fileChange3(fileInput){
+    this.filesToUpload3 = <Array<File>>fileInput.target.files;
   }
 }

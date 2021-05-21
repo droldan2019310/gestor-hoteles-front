@@ -64,4 +64,11 @@ export class RestUserService {
     .pipe(map(this.extractData));
   }
 
+  login(user, getToken){
+    user.getToken = getToken;
+    let params = JSON.stringify(user);
+
+    return this.http.post(this.uri+'login', params, this.httpOptions)
+    .pipe(map(this.extractData));
+  }
 }

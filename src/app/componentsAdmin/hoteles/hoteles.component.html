@@ -45,19 +45,30 @@
     </div>
     <div class="col-lg-9 mt-4 mb-4" *ngIf="sidebarStatus==2">
       <div class="row justify-content-center mr-3 ml-3">
-        <form class="text-center row justify-content-center">
+        <form #agregarHotel="ngForm" id="agregarHotel" (ngSubmit)="onSubmit(agregarHotel)" class="text-center row justify-content-center">
             <div class="col-lg-12 row justify-content-center m-0 p-0">
-                <input type="text" id="login" class="fadeIn second w-100" name="login" placeholder="Nombre del Hotel">
-                <input type="text" id="login" class="fadeIn second w-100" name="login" placeholder="Telefono del Hotel">
+                <input required #name="ngModel" [(ngModel)]="hotel.name" type="text" id="name" class="fadeIn second w-100" name="name" placeholder="Nombre del Hotel">
+                <span *ngIf="!name.valid && name.touched">Campo Obligatorio</span>
+                <input required #phone="ngModel" [(ngModel)]="hotel.phone" type="number" id="phone" class="fadeIn second w-100" name="phone" placeholder="Telefono del Hotel">
+                <span *ngIf="!phone.valid && phone.touched">Campo Obligatorio</span>
             </div>
-          <input type="text" id="login" class="fadeIn second w-100" name="login" placeholder="Email">
-          <select class="fadeIn second w-100" >
-              <option>Administrador del Hotel</option>
-              <option>Datos</option>
-              <option>Datos</option>
+          <input required #email="ngModel" [(ngModel)]="hotel.email" type="email" id="email" class="fadeIn second w-100" name="email" placeholder="Email">
+          <span *ngIf="!email.valid && email.touched">Campo Obligatorio</span>
+         
+          <select  class="fadeIn second w-100" #addres="ngModel" [(ngModel)]="hotel.addres" id="addres"  name="addres">
+            <option>Guatemala</option>
+            <option>Retalhuleu</option>
+            <option>Solola</option>
           </select>
-          <textarea class="fadeIn second w-100"  placeholder="Dirección del Hotel"></textarea>
-          <input type="file"  class="fadeIn third form-control" name="login" placeholder="password"><br>
+          <span *ngIf="!addres.valid && addres.touched">Campo Obligatorio</span>
+          <textarea required #descAdress="ngModel" [(ngModel)]="hotel.descAdress" class="fadeIn second w-100" name="descAdress" id="descAdress" form="agregarH" placeholder="Dirección del Hotel"></textarea>
+          <span *ngIf="!descAdress.valid && descAdress.touched">Campo Obligatorio</span>
+          <select  class="fadeIn second w-100" name="selectUser" #users="ngModel" [(ngModel)]="userSelected.username" >
+              <option *ngFor="let option of usersAdmin" [value]="option.username">{{option.username}}</option>
+          </select>
+          <input type="file" (change)="fileChange($event)" class="fadeIn third form-control mb-2"  >
+          <input type="file" (change)="fileChange2($event)"  class="fadeIn third form-control mb-2"  >
+          <input type="file" (change)="fileChange3($event)"  class="fadeIn third form-control mb-2"  >
           <input type="submit" class="fadeIn fourth btn" value="Registrar">
         </form>
       </div>
@@ -145,3 +156,4 @@
       </div>
     </div>
 </div>
+<notifier-container></notifier-container>

@@ -31,14 +31,12 @@ export class RegisterComponent implements OnInit {
           this.user = new User('','','','','','','','ROLE_USER');
           this.notifier.notify('success', res.message);
           register.reset();
-          this.router.navigateByUrl("login");
         }else{
           this.notifier.notify('warning', res.message);
         }
     },
     error=>{
-      this.notifier.notify('warning', error.error.message);
-    }
-    )
+      this.notifier.notify('error', error.error.message);
+    })
   }
 }
