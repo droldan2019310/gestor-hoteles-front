@@ -56,6 +56,18 @@ export class RestHotelService {
     .pipe(map(this.extractData));
 
   }
+  getHotels(){
+    this.token = this.getToken();
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+
+    return this.http.get(this.uri+'getHotelsRooms',{headers: headers})
+    .pipe(map(this.extractData));
+
+  }
 
   getUsersHotel(){
     let headers = new HttpHeaders({
@@ -100,4 +112,51 @@ export class RestHotelService {
         xhr.send(formData);
       })
   }
+
+  editHotel(idHotel, hotel){
+      let params = JSON.stringify(hotel);
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getToken()
+      })
+      return this.http.put(this.uri+'updateHotel/'+idHotel,params,{headers:headers})
+      .pipe(map(this.extractData));
+  }
+  
+
+  setRoomHotel(idHotel,room){
+    let params = JSON.stringify(room);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    return this.http.put(this.uri+idHotel+'/setRoomHotel',params,{headers:headers})
+    .pipe(map(this.extractData))
+  }
+
+  setImageRoom(idRoom:string, params:Array<string>, files: Array<File>, token:string, name:string){
+    
+    return new Promise((resolve, reject)=>{
+      var formData:any = new FormData();
+      var xhr = new XMLHttpRequest();
+      let uri = this.uri+idRoom+'/uploadImageRoom';
+      console.log(uri)
+      for(var i=0; i<files.length; i++){
+        formData.append(name, files[i], files[i].name);
+      }
+      xhr.onreadystatechange = () =>{
+        if(xhr.readyState ==4){
+          if(xhr.status == 2){
+            resolve(JSON.parse(xhr.response));
+          }else{
+            reject(xhr.response);
+          }
+        }
+      }
+      xhr.open('PUT', uri, true);
+      xhr.setRequestHeader('Authorization',token);
+      xhr.send(formData);
+    })
+}
+
 }
