@@ -14,7 +14,9 @@ import { HabitacionesComponent } from './components/habitaciones/habitaciones.co
 import { EventosComponent } from './components/eventos/eventos.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { FormsModule } from '@angular/forms';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
+import { NotifierModule,NotifierOptions } from "angular-notifier";
 import {BrowserAnimationsModule  } from "@angular/platform-browser/animations";
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -31,6 +33,48 @@ import { ChartsModule } from 'ng2-charts';
 import { AdminHotelComponent } from './componentsHotel/admin-hotel/admin-hotel.component';
 import { InicioComponent } from './componentsHotel/inicio/inicio.component';
 import { HabitacionesAdminComponent } from './componentsHotel/habitaciones-admin/habitaciones-admin.component';
+import { RestUserService } from './services/restUser/rest-user.service';
+const customNotifierOptions: NotifierOptions = {
+  position: {
+		horizontal: {
+			position: 'left',
+			distance: 12
+		},
+		vertical: {
+			position: 'bottom',
+			distance: 12,
+			gap: 10
+		}
+	},
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,9 +108,11 @@ import { HabitacionesAdminComponent } from './componentsHotel/habitaciones-admin
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
+    NotifierModule.withConfig(customNotifierOptions)
   ],
-  providers: [],
+  providers: [RestUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

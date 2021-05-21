@@ -8,16 +8,35 @@
           <h1>Crea tu cuenta</h1>
         </div>
     
-        <form>
+        <form #register= "ngForm" (ngSubmit)="onSubmit(register)">
             <div class="col-lg-12 row justify-content-center m-0 p-0">
-                <input type="text" id="login" class="fadeIn second col-lg-5" name="login" placeholder="name">
-                <input type="text" id="login" class="fadeIn second col-lg-5" name="login" placeholder="lastName">
+                <div style="width: 85%;" class="row p-0">
+                  <div class="col-lg-6 pl-0">
+                    <input type="text" #name="ngModel" required   id="name" class="fadeIn second w-100 " [(ngModel)]="user.name" name="name" placeholder="name">
+                    <span *ngIf="!name.valid && name.touched">Campo Obligatorio</span>
+                  </div>
+                  <div class="col-lg-6 pr-0">
+                    <input type="text" #lastname="ngModel" required  id="lastname" class="fadeIn second w-100" [(ngModel)]="user.lastname" name="lastname" placeholder="lastName">
+                    <span *ngIf="!lastname.valid && lastname.touched">Campo Obligatorio</span>
+                  </div>
+                </div>
             </div>
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="phone">
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="userName">
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="email">
-          <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-          <input type="submit" class="fadeIn fourth" value="Registrarme">
+          <input type="number" #phone="ngModel" required id="phone" [(ngModel)]="user.phone" class="fadeIn second" name="phone" placeholder="phone">
+          <br><span *ngIf="!phone.valid && phone.touched">Campo Obligatorio</span>
+
+          <input type="text" #username="ngModel" required id="username" [(ngModel)]="user.username" class="fadeIn second" name="username" placeholder="userName">
+          <br><span *ngIf="!username.valid && username.touched">Campo Obligatorio</span>
+          
+          <input type="text" #email="ngModel" required id="email" [(ngModel)]="user.email" class="fadeIn second" name="email" placeholder="email">
+          <br><span *ngIf="!email.valid && email.touched">Campo Obligatorio</span>
+          
+          <input type="password" #password="ngModel" required id="password" [(ngModel)]="user.password" class="fadeIn third" name="password" placeholder="password">
+          <br><span *ngIf="!password.valid && password.touched">Campo Obligatorio</span>
+
+          <input type="password" #passwordConfirm="ngModel" required id="passwordConfirm"   [(ngModel)]="passwordC" class="fadeIn third" name="passwordConfirm" placeholder="Confirma tu password">
+          <br><span *ngIf="!passwordConfirm.valid && passwordConfirm.touched || user.password != passwordC">Campo Obligatorio</span>
+          <br>
+          <input type="submit"  class="fadeIn fourth" value="Registrarme">
         </form>
     
         <div id="formFooter">
@@ -27,3 +46,5 @@
       </div>
     </div>
   </body>
+
+  <notifier-container></notifier-container>
