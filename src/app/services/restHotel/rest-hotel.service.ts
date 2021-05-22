@@ -157,6 +157,11 @@ export class RestHotelService {
       xhr.setRequestHeader('Authorization',token);
       xhr.send(formData);
     })
-}
+  }
 
+
+  best3Hotel(){
+    return this.http.get(this.uri+'/best3Hotel',this.httpOptions)
+    .pipe(map(this.extractData));
+  }
 }
