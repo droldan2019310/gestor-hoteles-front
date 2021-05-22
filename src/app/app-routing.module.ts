@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
 import { InicioAdminComponent } from './componentsAdmin/inicio-admin/inicio-admin.component';
 import { AdminHotelComponent } from './componentsHotel/admin-hotel/admin-hotel.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'reservacion',component:ReservacionComponent},
   {path:'miCuenta',component:MiCuentaComponent},
   {path: 'reservaciones', component:ReservacionesComponent},
-  {path: 'InicioAdmin', component:InicioAdminComponent},
+  {path: 'InicioAdmin',canActivate: [AdminGuard] ,component:InicioAdminComponent},
   {path: 'Hoteles', component:HotelComponent},
   {path: 'AdminHotel', component:AdminHotelComponent},
   {path:'**',component:NotFoundComponent}

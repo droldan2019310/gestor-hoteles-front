@@ -64,4 +64,42 @@ export class RestUserService {
     .pipe(map(this.extractData));
   }
 
+  login(user, getToken){
+    user.getToken = getToken;
+    let params = JSON.stringify(user);
+
+    return this.http.post(this.uri+'login', params, this.httpOptions)
+    .pipe(map(this.extractData));
+  }
+
+  saveUserbyAdmin(user){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+    let params = JSON.stringify(user);
+
+    return this.http.post(this.uri+'saveUserAdmin',params, {headers:headers})
+    .pipe(map(this.extractData));
+  }
+
+
+  getUsers(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+    return this.http.get(this.uri+'getUsers',{headers:headers})
+    .pipe(map(this.extractData));
+    
+  }
+
+  countUser(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+    return this.http.get(this.uri+'/countUser',{headers:headers})
+    .pipe(map(this.extractData));
+  }
 }

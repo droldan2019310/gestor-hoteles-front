@@ -34,6 +34,7 @@ import { AdminHotelComponent } from './componentsHotel/admin-hotel/admin-hotel.c
 import { InicioComponent } from './componentsHotel/inicio/inicio.component';
 import { HabitacionesAdminComponent } from './componentsHotel/habitaciones-admin/habitaciones-admin.component';
 import { RestUserService } from './services/restUser/rest-user.service';
+import { ListHotelsComponent } from './componentsAdmin/hoteles/list-hotels/list-hotels.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -101,7 +102,8 @@ const customNotifierOptions: NotifierOptions = {
     GraficasComponent,
     AdminHotelComponent,
     InicioComponent,
-    HabitacionesAdminComponent
+    HabitacionesAdminComponent,
+    ListHotelsComponent
   ],
   imports: [
     BrowserModule,

@@ -7,9 +7,11 @@
         <h1>Inicio Sesión</h1>
       </div>
   
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <form #login="ngForm" (ngSubmit)="onSubmit()">
+        <input type="text" #username="ngModel" [(ngModel)]="user.username" required id="username" class="fadeIn second" name="username" placeholder="username">
+        <br><span *ngIf="!username.valid && username.touched">Campo Obligatorio</span>
+        <input type="password" #password="ngModel" [(ngModel)]="user.password" required id="password" class="fadeIn third" name="password" placeholder="password">
+        <br><span *ngIf="!password.valid && password.touched">Campo Obligatorio</span><br>
         <input type="submit" class="fadeIn fourth" value="Log In">
         <a class="underlineHover w-100 pb-2  pr-4 ml-1" style="text-align: right; color: #C62828;" href="#">¿Olvidaste tu contraseña?</a>
       </form>
@@ -21,3 +23,4 @@
     </div>
   </div>
 </body>
+<notifier-container></notifier-container>
