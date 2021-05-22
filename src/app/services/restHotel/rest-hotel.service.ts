@@ -164,4 +164,18 @@ export class RestHotelService {
     return this.http.get(this.uri+'/best3Hotel',this.httpOptions)
     .pipe(map(this.extractData));
   }
+  best1Hotel(){
+    return this.http.get(this.uri+'/best1Hotel',this.httpOptions)
+    .pipe(map(this.extractData));
+  }
+  
+  getHotelsHome(){
+    return this.http.get(this.uri+'/getHotels',this.httpOptions)
+    .pipe(map(this.extractData));
+  }
+  
+  searchHotel(id){
+    return this.http.get(this.uri+'/searchHotel/'+id,this.httpOptions)
+    .pipe(map(this.extractData));
+  }
 }

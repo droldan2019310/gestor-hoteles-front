@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CONNECTION } from 'src/app/services/global';
 import {fadeIn} from '../Animations/Animations';
 
 @Component({
@@ -8,10 +9,18 @@ import {fadeIn} from '../Animations/Animations';
   animations: [fadeIn]
 })
 export class HabitacionesComponent implements OnInit {
-
-  constructor() { }
+  public rooms:[];
+  uri;
+  constructor() { 
+    this.uri = CONNECTION.URI;
+  }
 
   ngOnInit(): void {
+    this.getRooms();
+  }
+  
+  getRooms(){
+    this.rooms = JSON.parse(localStorage.getItem("hotelRoom"));
   }
 
 }

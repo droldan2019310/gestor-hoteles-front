@@ -39,6 +39,7 @@ import { EventosServiciosComponent } from './componentsHotel/eventos-servicios/e
 import { AgregarComponent } from './componentsHotel/eventos-servicios/agregar/agregar.component';
 import { EventosAdminComponent } from './componentsHotel/eventos-servicios/eventos-admin/eventos-admin.component';
 import { PipesPipe } from './pipes/pipes.pipe';
+import { SearchPipe } from './pipes/pipeHotel/search.pipe';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -111,7 +112,8 @@ const customNotifierOptions: NotifierOptions = {
     EventosServiciosComponent,
     AgregarComponent,
     EventosAdminComponent,
-    PipesPipe
+    PipesPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

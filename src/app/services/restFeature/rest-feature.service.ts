@@ -90,5 +90,11 @@ export class RestFeatureService {
     .pipe(map(this.extractData));
 
   }
+  getFeature(hotelId){
+    
+    
+    return this.http.get(this.uri+hotelId+'/getFeatureByHotelHome',this.httpOptions)    
+    .pipe(map(this.extractData));
 
+  }
 }

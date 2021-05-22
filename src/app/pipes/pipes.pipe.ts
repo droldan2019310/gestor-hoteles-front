@@ -10,7 +10,6 @@ export class PipesPipe implements PipeTransform {
         return rooms;
     }else{
       return rooms.filter( rooms12=>{
-        console.log(rooms12)
         return rooms12.nameRoom.toLowerCase().includes(search.toLowerCase())
       })
     }
