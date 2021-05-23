@@ -7,16 +7,16 @@
     <div class="col-lg-3 text-center verde">
         <span class="texto">Reservaciones:</span>
         <br>
-        <span class="texto">500</span>
+        <span class="texto">{{countReservation}}</span>
     </div>
     
     <div class="col-lg-3 text-center amarillo">
         <span class="texto">Mejor Hotel:</span>
         <br>
-        <span class="texto">500</span>
+        <span class="texto">{{bestHotel}}</span>
     </div>
 </div>
-<div style="display: block;">
+<div style="display: block;" *ngIf="bestHotel != null">
     <canvas baseChart 
       [datasets]="barChartData"
       [labels]="barChartLabels"

@@ -7,10 +7,13 @@
         <div class="col-lg-6 ">
             <h2 class="mt-4 mb-2" >{{roomOption.nameRoom}}</h2>
             <p class="Disponible mb-2" *ngIf="roomOption.availableRoom > 0 && roomOption.status == 'Disponible'">Habitaciones Disponibles: {{roomOption.availableRoom}}</p>
+            <p class="text-danger mb-2" *ngIf="roomOption.status == 'No Disponible'">HABITACIONES NO DISPONIBLES</p>
             <p class="text-muted text-left mb-2">Precio de la habitación: {{roomOption.priceRoom}}</p>
             <p class="text-muted text-left mb-2">habitación tipo: {{roomOption.typeRoom}}</p>
             <p class="text-muted text-left mb-2">{{roomOption.descRoom}}</p>
-            <button  routerLink="../reservacion" class="fadeIn fourth mb-2"> Reservar</button>
+            <button  routerLink="../../reservacion/{{hotel._id}}/{{roomOption._id}}" (click)="setRoomSelect(roomOption)" class="fadeIn fourth mb-2" *ngIf="token != null && roomOption.status == 'Disponible'"> Reservar</button>
+            <button    class="fadeIn fourth mb-2" disabled *ngIf="token != null && roomOption.status == 'No Disponible'"> OCUPADAS</button>
+            <button  routerLink="../../login" class="fadeIn fourth mb-2" *ngIf="token  == null"> Iniciar Sesión</button>
         </div>
     </div>
 </div>

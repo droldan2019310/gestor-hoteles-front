@@ -11,7 +11,7 @@
                         <li  data-dismiss="collapse">
                             <a class="nav-link" (click)="status(1)">Eventos/Servicios</a>
                         </li>
-                        <li class="nav-item " >
+                        <li class="nav-item pb-5" >
                             <a class="nav-link" (click)="status(2)">Agregar Evento/Servicio</a>
                         </li>
                     </ul>
@@ -24,3 +24,4 @@
     </div>
     <app-eventos-admin class="col-lg-9 mt-4 mb-4 pb-5" *ngIf="sidebarStatus==1"></app-eventos-admin>
     <app-agregar class="col-lg-9 mt-4 mb-4 pb-5" *ngIf="sidebarStatus==2"></app-agregar>
+</div>

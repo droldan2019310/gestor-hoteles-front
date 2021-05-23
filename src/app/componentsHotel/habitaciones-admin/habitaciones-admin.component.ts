@@ -30,7 +30,7 @@ export class HabitacionesAdminComponent implements OnInit,DoCheck {
     this.getRooms();
 
     this.token = restUser.getToken();
-    this.hotel = new Hotel('','',null,'','','','',null,null, null, null)
+    this.hotel = new Hotel('','',null,'','','','',null,null,null, null, null)
     this.room= new Room('','',null,'','','','','0','','Disponible');
     this.roomSelected= new Room('','',null,'','','','','','','');
     this.uri = CONNECTION.URI;

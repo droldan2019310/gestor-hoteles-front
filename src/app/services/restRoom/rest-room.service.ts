@@ -70,7 +70,7 @@ export class RestRoomService {
         'Content-Type': 'application/json',
         'Authorization': this.getToken()
       })
-      return this.http.put(this.uri+hotelId+'/updateRoom/'+roomId,params,{headers:headers})
+      return this.http.put(this.uri+hotelId+'/updateRoomClient/'+roomId,params,{headers:headers})
       .pipe(map(this.extractData));
     }
 }

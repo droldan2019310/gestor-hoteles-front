@@ -18,10 +18,15 @@
             <li class="nav-item">
               <a class="nav-link" (click)="changeStatus(3)">Eventos/Servicios</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="changeStatus(4)">Reservaciones</a>
+            </li>
           </ul>
         </div>
     </nav>
-    <app-inicio *ngIf="navbarStatus==1"></app-inicio>
-    <app-habitaciones-admin *ngIf="navbarStatus==2"></app-habitaciones-admin>
-    <app-eventos-servicios *ngIf="navbarStatus==3"></app-eventos-servicios>
+      <app-inicio *ngIf="navbarStatus==1"></app-inicio>
+      <app-habitaciones-admin *ngIf="navbarStatus==2"></app-habitaciones-admin>
+      <app-eventos-servicios *ngIf="navbarStatus==3"></app-eventos-servicios>
+      <app-reservation-by-hotel *ngIf="navbarStatus==4"></app-reservation-by-hotel>
+     
 </body>

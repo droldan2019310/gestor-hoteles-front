@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
+import { RestInvoicesService } from 'src/app/services/restInvoices/rest-invoices.service';
 
 
 @Component({
@@ -6,15 +8,77 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
-export class InicioComponent implements OnInit {
- 
-  constructor() { 
-    
+export class InicioComponent implements OnInit, DoCheck {
+  public reservCount;
+  public invoiceFac:[];
+  public available;
+  public reservations:[];
+  public guest;
+  public hotel;
+  public search;
+  public readonly notifier;
+  constructor(private restIvoice: RestInvoicesService,restNotifier:NotifierService) { 
+      this.notifier = restNotifier;
+      this.getHotel();
   }
 
+  ngDoCheck(){
+    this.getInvoices();
+  }
   ngOnInit(): void {
-   
+    this.getReservationCount();
+    this.getAvailableRooms();
+    this.getCountGuest();
+    this.getInvoices();
+    this.getRerservations();
+    this.getHotel();
+    this.getInvoiceByHotel();
+  }
+  getReservationCount(){
+    this.reservCount = localStorage.getItem("reservationCount");
+  }
+  getAvailableRooms(){
+    this.available = localStorage.getItem("availableRoom");
   }
 
-  
+  getCountGuest(){
+    this.guest = localStorage.getItem("guestCount");
+  }
+
+  getInvoices(){
+    this.invoiceFac = JSON.parse(localStorage.getItem("invoiceHotel"));
+  }
+  getHotel(){
+    this.hotel = JSON.parse(localStorage.getItem("hotel"));
+  }
+  getRerservations(){
+    this.reservations = JSON.parse(localStorage.getItem("reservationsHotel"));
+  }
+
+  payInvoice(idInvoice, idUser){
+    this.restIvoice.payInvoice(idInvoice,idUser).subscribe((res:any)=>{
+      if(res.invoiceUpdate){
+        this.notifier.notify("success", res.message);
+        this.getInvoiceByHotel();
+        this.getInvoices();
+      }else{
+        this.notifier.notify("warning", res.message);
+      }
+    }, error=>{
+      this.notifier.notify("error", error.error.message);
+    })
+
+  }
+
+  getInvoiceByHotel(){
+    this.restIvoice.getInvoicebyHotel(this.hotel._id).subscribe((res:any)=>{
+      if(res.invoiceFind){
+        localStorage.setItem("invoiceHotel", JSON.stringify(res.invoiceFind))
+      }else{
+
+      }
+    },error=>{
+      this.notifier.notify("error",error.error.message);
+    })
+  }
 }

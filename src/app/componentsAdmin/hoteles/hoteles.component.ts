@@ -6,6 +6,7 @@ import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 import { NotifierService } from 'angular-notifier';
 import { CONNECTION } from 'src/app/services/global';
 import { Room } from 'src/app/models/room';
+import { throttleTime } from 'rxjs/operators';
 
 
 @Component({
@@ -32,8 +33,8 @@ export class HotelesComponent implements OnInit {
 
   statusHabitacion;
   constructor(private restHotel: RestHotelService, private restUser: RestUserService, private notifierService:NotifierService) { 
-    this.hotel = new Hotel('','',null,'','','','',[],[],[],[]);
-    this.hotelSelected = new Hotel('','',null,'','','','',[],[],[],[]);
+    this.hotel = new Hotel('','',null,'','','','',null,[],[],[],[]);
+    this.hotelSelected = new Hotel('','',null,'','','','',null,[],[],[],[]);
     this.user = restUser.getUser();
     this.token = restUser.getToken();
     this.sidebarStatus = 1;
@@ -55,7 +56,7 @@ export class HotelesComponent implements OnInit {
   }
   
   onSubmit(form){
-
+      this.hotel.cantReservs = 0;
       this.restHotel.saveHotel(this.hotel).subscribe((res:any)=>{
         
         if(res.hotelSaved){
@@ -67,8 +68,8 @@ export class HotelesComponent implements OnInit {
           this.setImages(res.hotelSaved._id,this.filesToUpload3);
           this.setUser(res.hotelSaved._id,this.userSelected);
          
-          form.reset();
           this.notifier.notify("success",res.message);
+          form.reset();
         }else{
           this.notifier.notify("warning",res.message);
           

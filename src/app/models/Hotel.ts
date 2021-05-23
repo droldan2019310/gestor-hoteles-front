@@ -7,6 +7,7 @@ export class Hotel{
         public addres: String,
         public description:String,
         public descAddress: String,
+        public cantReservs:number,
         public images: [],
         public users: [],
         public rooms: [],

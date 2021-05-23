@@ -1,4 +1,4 @@
-
+<div>
     <h1 class="nombreHotel">Mi Cuenta</h1>
     <div class="wrapper fadeInDown col-lg-8">
       <div id="formContent">
@@ -7,15 +7,15 @@
           <h1>Edita tu cuenta</h1>
         </div>
     
-        <form>
+        <form #register="ngForm" name="register">
             <div class="col-lg-12 row justify-content-center m-0 p-0">
-                <input type="text" id="login" class="fadeIn col-lg-5 second " name="login" placeholder="name">
-                <input type="text" id="login" class="fadeIn col-lg-5 second " name="login" placeholder="lastName">
+                <input type="text" required #name="ngModel" [(ngModel)]="userRegister.name" id="name" class="fadeIn col-lg-5 second " name="name" placeholder="name">
+                <input type="text" required #lastname="ngModel" [(ngModel)]="userRegister.lastname" id="lastname" class="fadeIn col-lg-5 second " name="lastname" placeholder="lastName">
             </div>
-          <input type="text" id="login" class="fadeIn second w-85" name="login" placeholder="phone">
-          <input type="text" id="login" class="fadeIn second w-85" name="login" placeholder="userName">
-          <input type="text" id="login" class="fadeIn second w-85" name="login" placeholder="email">
-          <input type="submit" class="fadeIn fourth" value="Editar Cuenta">
+          <input type="number" required  #phone="ngModel" [(ngModel)]="userRegister.phone" id="phone" class="fadeIn second w-85" name="phone" placeholder="phone">
+          <input type="text" required  #username="ngModel" [(ngModel)]="userRegister.username" id="username" class="fadeIn second w-85" name="username" placeholder="userName">
+          <input type="text" required #email="ngModel" [(ngModel)]="userRegister.email" id="email" class="fadeIn second w-85" name="email" placeholder="email">
+          <input type="submit" (click)="updateUser()" class="fadeIn fourth" value="Editar Cuenta">
         </form>
     
         <div id="formFooter">
@@ -24,3 +24,6 @@
     
       </div>
     </div>
+</div>
+
+<notifier-container></notifier-container>

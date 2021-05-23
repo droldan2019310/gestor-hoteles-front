@@ -27,8 +27,8 @@ export class ListHotelsComponent implements OnInit, DoCheck {
   userSelected:User;
   constructor(private restHotel: RestHotelService, private restUser: RestUserService, private notifierService:NotifierService,) { 
      
-    this.hotel = new Hotel('','',null,'','','','',[],[],[],[]);
-    this.hotelSelected = new Hotel('','',null,'','','','',[],[],[],[]);
+    this.hotel = new Hotel('','',null,'','','','',null,[],[],[],[]);
+    this.hotelSelected = new Hotel('','',null,'','','','',null,[],[],[],[]);
     this.user = restUser.getUser();
     this.token = restUser.getToken();
     this.userSelected = new User('','','','','','','','');
