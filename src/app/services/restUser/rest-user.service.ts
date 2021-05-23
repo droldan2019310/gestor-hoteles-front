@@ -102,4 +102,15 @@ export class RestUserService {
     return this.http.get(this.uri+'/countUser',{headers:headers})
     .pipe(map(this.extractData));
   }
+
+  findHotelAdmin(userId){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+    console.log(this.uri+'findUserByHotel/'+userId);
+    return this.http.put(this.uri+'findUserByHotel/'+userId,{},{headers:headers})
+    .pipe(map(this.extractData));
+  }
+
 }

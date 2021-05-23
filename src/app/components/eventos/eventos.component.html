@@ -1,26 +1,14 @@
-<div id="formContent" [@fadeIn] style="align-items: center; justify-content: center;margin: auto;" class="col-lg-9 row mb-4">
+<div id="formContent" [@fadeIn] *ngFor="let optionEvent of features" style="align-items: center; justify-content: center;margin: auto;" class="col-lg-9 row mb-4">
     <div class="col-lg-6">
-        <img width="300" class="img-fluid" src="../../../assets/evento1.jpeg">
+        <img width="300" style="max-height: 222px;" class="img-fluid" src="{{uri+'getImage/'+optionEvent.img}}">
     </div>
     <div class="col-lg-6 ">
-        <h2 class="mt-4">¡Música En Vivo!</h2>
-        <p class="Disponible">Para todos nuestros Huespedes</p>
-        <p class="text-muted text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, 
-            voluptates dolorem! Praesentium ad commodi harum amet dolores explicabo temporibus magni,</p>
-
-            <h2 class="mt-4">¡Ven Con Nosotros!</h2>
-    </div>
-</div>
-<div id="formContent" style="align-items: center; justify-content: center;margin: auto;" class="col-lg-9 row mb-4">
-    <div class="col-lg-6">
-        <img width="300" class="img-fluid" src="../../../assets/evento1.jpeg">
-    </div>
-    <div class="col-lg-6 ">
-        <h2 class="mt-4">¡Música En Vivo!</h2>
-        <p class="Disponible">Para todos nuestros Huespedes</p>
-        <p class="text-muted text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, 
-            voluptates dolorem! Praesentium ad commodi harum amet dolores explicabo temporibus magni,</p>
-
-            <h2 class="mt-4">¡Ven Con Nosotros!</h2>
+        <h2 class="mt-4">{{optionEvent.title}}</h2>
+        <p class="Disponible mb-2">{{optionEvent.preferences}}</p>
+        <p class="Disponible mb-2">Precio del {{optionEvent.type}} :{{optionEvent.price}}</p>
+        <p class="text-muted text-left mb-2">{{optionEvent.desc}}</p>
+        <p class="text-muted text-left mb-2">{{optionEvent.type}}</p>
+        <h2 class="mt-4 mb-2">{{optionEvent.slogan}}</h2>
+        <button  routerLink="../reservacion" class="fadeIn fourth mb-2"> Adquirir</button>
     </div>
 </div>

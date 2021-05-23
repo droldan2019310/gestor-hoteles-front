@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'', redirectTo:'home', pathMatch: 'full'},
   {path:'not-found',component:NotFoundComponent},
-  {path:'HotelInicio', component: HotelInicioComponent},
+  {path:'HotelInicio/:idHotel', component: HotelInicioComponent},
   {path:'login',component:LoginComponent},
   {path: 'register',component:RegisterComponent},
   {path: 'reservacion',component:ReservacionComponent},

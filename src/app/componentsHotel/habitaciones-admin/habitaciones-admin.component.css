@@ -88,7 +88,7 @@
     transform: scale(0.95);
   }
   
-  input[type=text],select,textarea {
+  input[type=text],select,textarea, input[type=search] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -242,8 +242,18 @@
       color: #00B74A;
       text-align: left;
   }
+  .ocupado{
+    color: #C62828;
+    text-align: left;
+  }
   .verMas{
       font-size: 18px;
       color: #C62828 !important;
       font-weight: bolder;
   }
+
+  p{
+    margin: 7px;
+  }
+
+ 

@@ -35,6 +35,11 @@ import { InicioComponent } from './componentsHotel/inicio/inicio.component';
 import { HabitacionesAdminComponent } from './componentsHotel/habitaciones-admin/habitaciones-admin.component';
 import { RestUserService } from './services/restUser/rest-user.service';
 import { ListHotelsComponent } from './componentsAdmin/hoteles/list-hotels/list-hotels.component';
+import { EventosServiciosComponent } from './componentsHotel/eventos-servicios/eventos-servicios.component';
+import { AgregarComponent } from './componentsHotel/eventos-servicios/agregar/agregar.component';
+import { EventosAdminComponent } from './componentsHotel/eventos-servicios/eventos-admin/eventos-admin.component';
+import { PipesPipe } from './pipes/pipes.pipe';
+import { SearchPipe } from './pipes/pipeHotel/search.pipe';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -103,7 +108,12 @@ const customNotifierOptions: NotifierOptions = {
     AdminHotelComponent,
     InicioComponent,
     HabitacionesAdminComponent,
-    ListHotelsComponent
+    ListHotelsComponent,
+    EventosServiciosComponent,
+    AgregarComponent,
+    EventosAdminComponent,
+    PipesPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
