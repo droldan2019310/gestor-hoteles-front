@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { RestHotelService } from 'src/app/services/restHotel/rest-hotel.service';
 import { NotifierService } from 'angular-notifier';
 import { RestUserService } from 'src/app/services/restUser/rest-user.service';
@@ -9,7 +9,7 @@ import { RestReservationService } from 'src/app/services/restReservation/rest-re
   templateUrl: './inicio-admin.component.html',
   styleUrls: ['./inicio-admin.component.css']
 })
-export class InicioAdminComponent implements OnInit {
+export class InicioAdminComponent implements OnInit, DoCheck {
   navbarStatus;
   private readonly notifier;
   public hotel1;
@@ -19,9 +19,12 @@ export class InicioAdminComponent implements OnInit {
   constructor(private resHotel:RestHotelService, private notifierService:NotifierService, private restUser: RestUserService, private restReservation:RestReservationService) {
     this.getHotel();
     notifier: notifierService;
+    this.getHotels();
+    this.getCountUsers();
+    this.getCountReservation();
+    this.getBestHotel();
     this.getUser();
     this.getCountUsers();
-    
    }
 
   ngOnInit(): void {
@@ -33,7 +36,8 @@ export class InicioAdminComponent implements OnInit {
     this.getCountUsers();
     this.navbarStatus=1
   }
-
+  ngDoCheck(){
+  }
   getHotels(){
     this.resHotel.getHotels().subscribe((res:any)=>{
       if(res.hotels){

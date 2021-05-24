@@ -9,23 +9,27 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./graficas.component.css']
 })
 export class GraficasComponent implements OnInit, DoCheck {
+  
+  public count = JSON.parse(localStorage.getItem("count"));
+  
+  public dato1= JSON.parse(localStorage.getItem("hotel1Reservs"));
+  public dato2 = JSON.parse(localStorage.getItem("hotel2Reservs"));
+  public dato3 = JSON.parse(localStorage.getItem("hotel3Reservs"));
+  public countReservation = localStorage.getItem("countReservation");
+  public bestHotel = localStorage.getItem("bestHotel");
+  
+  @ViewChild(BaseChartDirective)
+  public chart: BaseChartDirective;
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public count;
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
-  public countReservation;
-  public bestHotel;
+ 
   public barChartLabels: Label[] = ["Mejores Hoteles"];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
-  public dato1= JSON.parse(localStorage.getItem("hotel1Reservs"));
-  public dato2 = JSON.parse(localStorage.getItem("hotel2Reservs"));
-  public dato3 = JSON.parse(localStorage.getItem("hotel3Reservs"));
 
   public barChartData: ChartDataSets[] = [
-    
     {data: [this.dato1], label: localStorage.getItem("hotel1")},
     {data: [this.dato2], label: localStorage.getItem("hotel2")},
     {data: [this.dato3], label: localStorage.getItem("hotel3")},
@@ -36,7 +40,6 @@ export class GraficasComponent implements OnInit, DoCheck {
     this.getCount();
     this.getCountReservation();
     this.getBestHotel();
-    console.log(this.barChartData)
   }
 
   ngOnInit(): void {
@@ -45,20 +48,13 @@ export class GraficasComponent implements OnInit, DoCheck {
     this.getBestHotel();
   }
  
-  addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
-  }
+  
   
   ngDoCheck(){
     this.getCount();
     this.getCountReservation();
     this.getBestHotel();
     
-   
   }
 
   
