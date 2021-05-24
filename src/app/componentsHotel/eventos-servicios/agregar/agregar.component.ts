@@ -20,7 +20,7 @@ export class AgregarComponent implements OnInit {
   private readonly notifier;
   constructor(private restHotel: RestHotelService, private restFeature:RestFeatureService, private restUser:RestUserService,private notifierService:NotifierService) { 
     this.feature = new Feautures('','','','','','','',null);
-    this.hotel = new Hotel('','',null,'','','','',null,null,null,null);
+    this.hotel = new Hotel('','',null,'','','','',null,null,null,null,null);
     this.getHotel();
     this.user = restUser.getUser();
     this.token = restUser.getToken();
@@ -49,7 +49,7 @@ export class AgregarComponent implements OnInit {
   }
   onSubmit(form){
       this.restFeature.saveFeature(this.feature,this.hotel._id).subscribe((res:any)=>{
-        if(res.updateFeature){
+        if(res.featureSaved){
           this.notifier.notify("success",res.message);
           form.reset();
           this.setImageFeature(res.featureSaved._id,this.fileFeature);

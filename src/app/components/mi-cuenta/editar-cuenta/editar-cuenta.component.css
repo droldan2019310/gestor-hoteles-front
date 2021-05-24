@@ -125,7 +125,7 @@ html {
   .w-85{
       width: 85%;
   }
-  input[type=text] {
+  input[type=text], input[type=number] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;

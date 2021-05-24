@@ -3,12 +3,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { CONNECTION } from "../global";
 import {map} from "rxjs/operators";
 
-
 @Injectable({
   providedIn: 'root'
 })
-
-export class RestUserService {
+export class RestInvoicesService {
   public uri: string;
   public token;
   public user;
@@ -57,79 +55,51 @@ export class RestUserService {
     return this.user;
   }
 
-  register(user){
-    let params = JSON.stringify(user);
-    
-    return  this.http.post(this.uri+'saveUser',params,this.httpOptions)
-    .pipe(map(this.extractData));
-  }
-
-  login(user, getToken){
-    user.getToken = getToken;
-    let params = JSON.stringify(user);
-
-    return this.http.post(this.uri+'login', params, this.httpOptions)
-    .pipe(map(this.extractData));
-  }
-
-  saveUserbyAdmin(user){
+  saveInvoice(userId, reservsId, invoice){
+    let params = JSON.stringify(invoice);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    let params = JSON.stringify(user);
+    })
 
-    return this.http.post(this.uri+'saveUserAdmin',params, {headers:headers})
+    return this.http.post(this.uri+'saveInvoice/'+userId+'/'+reservsId,params,{headers:headers})
     .pipe(map(this.extractData));
+  
   }
 
-
-  getUsers(){
+  getInvoice(userId){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    return this.http.get(this.uri+'getUsers',{headers:headers})
+    })
+    return this.http.get(this.uri+'invoiceGet/'+userId,{headers:headers})
     .pipe(map(this.extractData));
-    
   }
-
-  countUser(){
+  getInvoiceFeature(userId){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    return this.http.get(this.uri+'/countUser',{headers:headers})
-    .pipe(map(this.extractData));
-  }
-
-  updateUser(idUser, data){
-    let params = JSON.stringify(data);
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.getToken()
-    });
-    console.log(this.uri+'updateUser/'+idUser)
-    return this.http.put(this.uri+'updateUser/'+idUser,params, {headers:headers})
-    .pipe(map(this.extractData));
-  }
-  findHotelAdmin(userId){
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.getToken()
-    });
-    console.log(this.uri+'findUserByHotel/'+userId);
-    return this.http.put(this.uri+'findUserByHotel/'+userId,{},{headers:headers})
+    })
+    return this.http.get(this.uri+'invoiceGetFeature/'+userId,{headers:headers})
     .pipe(map(this.extractData));
   }
 
-  getReservation(userId){
+  getInvoicebyHotel(hotelId){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    console.log(this.uri+'reservsByUser/'+userId)
-    return this.http.get(this.uri+'reservsByUser/'+userId, {headers:headers})
+    })
+    return this.http.get(this.uri+'invoiceByHotel/'+hotelId,{headers:headers})
     .pipe(map(this.extractData));
+  }
+
+  payInvoice(invoiceId, userId){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+
+    return this.http.put(this.uri+'payInvoice/'+userId+'/'+invoiceId,{},{headers:headers})
+    .pipe(map(this.extractData))
   }
 }

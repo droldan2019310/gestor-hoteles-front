@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CONNECTION } from 'src/app/services/global';
 import { fadeIn } from '../../Animations/Animations';
 
 @Component({
@@ -8,10 +9,19 @@ import { fadeIn } from '../../Animations/Animations';
   styleUrls: ['./reservaciones.component.css']
 })
 export class ReservacionesComponent implements OnInit {
-
-  constructor() { }
+  public reservations:[];
+  public uri;
+  
+  constructor() { 
+    this.uri = CONNECTION.URI;
+  }
 
   ngOnInit(): void {
+    this.getReservations();
+  }
+
+  getReservations(){
+    this.reservations = JSON.parse(localStorage.getItem("reservationClient"))
   }
 
 }

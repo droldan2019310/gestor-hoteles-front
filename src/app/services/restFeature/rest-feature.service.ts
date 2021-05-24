@@ -97,4 +97,13 @@ export class RestFeatureService {
     .pipe(map(this.extractData));
 
   }
+
+  setFeature(userId,featureId){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    return this.http.put(this.uri+'updateInvoice/'+userId+'/'+featureId,{},{headers:headers})
+    .pipe(map(this.extractData));
+  }
 }

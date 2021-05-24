@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'HotelInicio/:idHotel', component: HotelInicioComponent},
   {path:'login',component:LoginComponent},
   {path: 'register',component:RegisterComponent},
-  {path: 'reservacion',component:ReservacionComponent},
+  {path: 'reservacion/:idHotel/:idRoom',component:ReservacionComponent},
   {path:'miCuenta',component:MiCuentaComponent},
   {path: 'reservaciones', component:ReservacionesComponent},
   {path: 'InicioAdmin',canActivate: [AdminGuard] ,component:InicioAdminComponent},

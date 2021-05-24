@@ -3,12 +3,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { CONNECTION } from "../global";
 import {map} from "rxjs/operators";
 
-
 @Injectable({
   providedIn: 'root'
 })
-
-export class RestUserService {
+export class RestReservationService {
   public uri: string;
   public token;
   public user;
@@ -57,79 +55,93 @@ export class RestUserService {
     return this.user;
   }
 
-  register(user){
-    let params = JSON.stringify(user);
-    
-    return  this.http.post(this.uri+'saveUser',params,this.httpOptions)
-    .pipe(map(this.extractData));
+  saveReservation(idHotel, idRoom,idUser, reservation){
+      let params = JSON.stringify(reservation);
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getToken()
+      })
+      console.log(idHotel,idRoom,idUser,reservation);
+      console.log(this.uri+'saveReservation/'+idUser+'/'+idHotel+'/'+idRoom)
+      return this.http.post(this.uri+'saveReservation/'+idUser+'/'+idHotel+'/'+idRoom,params,{headers:headers})
+      .pipe(map(this.extractData))
   }
 
-  login(user, getToken){
-    user.getToken = getToken;
-    let params = JSON.stringify(user);
-
-    return this.http.post(this.uri+'login', params, this.httpOptions)
-    .pipe(map(this.extractData));
-  }
-
-  saveUserbyAdmin(user){
+  
+  getCountReservation(){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    let params = JSON.stringify(user);
-
-    return this.http.post(this.uri+'saveUserAdmin',params, {headers:headers})
+    })
+    return this.http.get(this.uri+'countReserv',{headers:headers})
     .pipe(map(this.extractData));
   }
 
-
-  getUsers(){
+  getReservationCount(hotelId){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    return this.http.get(this.uri+'getUsers',{headers:headers})
+    })
+    console.log(this.uri+'countReservByHotel/'+hotelId)
+    return this.http.get(this.uri+'countReservByHotel/'+hotelId,{headers:headers})
     .pipe(map(this.extractData));
-    
   }
 
-  countUser(){
+  availableRoom(hotelId,roomId,data){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    return this.http.get(this.uri+'/countUser',{headers:headers})
-    .pipe(map(this.extractData));
-  }
-
-  updateUser(idUser, data){
+    })
     let params = JSON.stringify(data);
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.getToken()
-    });
-    console.log(this.uri+'updateUser/'+idUser)
-    return this.http.put(this.uri+'updateUser/'+idUser,params, {headers:headers})
+
+    this.http.put(this.uri+'availableRoom/'+hotelId+'/'+roomId,params,{headers:headers})
     .pipe(map(this.extractData));
+    
   }
-  findHotelAdmin(userId){
+
+  cancelReservation(idReservation){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    console.log(this.uri+'findUserByHotel/'+userId);
-    return this.http.put(this.uri+'findUserByHotel/'+userId,{},{headers:headers})
+    })
+    return this.http.put(this.uri+'cancerlarRevserv/'+idReservation,{},{headers:headers})
     .pipe(map(this.extractData));
   }
 
-  getReservation(userId){
+  updateReservation(idReservation, params){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
-    console.log(this.uri+'reservsByUser/'+userId)
-    return this.http.get(this.uri+'reservsByUser/'+userId, {headers:headers})
+    })
+    return this.http.put(this.uri+'updateReservation/'+idReservation,params,{headers:headers})
     .pipe(map(this.extractData));
+  }
+
+  updateHotel(idHotel){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    return this.http.put(this.uri+'reservsAddHotel/'+idHotel,{},{headers:headers})
+    .pipe(map(this.extractData));
+  }
+
+  getReservationsByHotel(idHotel){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    return this.http.get(this.uri+'reservsByHotel/'+idHotel,{headers:headers})
+    .pipe(map(this.extractData));
+  }
+
+  getCountGuest(idHotel){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    return this.http.get(this.uri+'usersByHotelCount/'+idHotel,{headers:headers})
+    .pipe(map(this.extractData));
+    
   }
 }

@@ -27,8 +27,8 @@ export class ListHotelsComponent implements OnInit, DoCheck {
   userSelected:User;
   constructor(private restHotel: RestHotelService, private restUser: RestUserService, private notifierService:NotifierService,) { 
      
-    this.hotel = new Hotel('','',null,'','','','',[],[],[],[]);
-    this.hotelSelected = new Hotel('','',null,'','','','',[],[],[],[]);
+    this.hotel = new Hotel('','',null,'','','','',null,[],[],[],[]);
+    this.hotelSelected = new Hotel('','',null,'','','','',null,[],[],[],[]);
     this.user = restUser.getUser();
     this.token = restUser.getToken();
     this.userSelected = new User('','','','','','','','');
@@ -93,6 +93,7 @@ export class ListHotelsComponent implements OnInit, DoCheck {
         this.setImageRoom(res.roomSaved._id,this.fileRoom);
         this.getHotelsRes();
         this.getHotels();
+        this.getHotelsHome();
       }else{
         this.notifier.notify("warning",res.message);
       }
@@ -100,7 +101,18 @@ export class ListHotelsComponent implements OnInit, DoCheck {
       this.notifier.notify("error", error.error.message);
     })
   }
-  
+  getHotelsHome(){
+    this.restHotel.getHotelsHome().subscribe((res:any)=>{
+      if(res.hotelFind){
+        localStorage.setItem("hotelsHome",JSON.stringify(res.hotelFind));
+
+      }else{
+        this.notifier.notify("error",res.message);
+      }
+    }, error=>{
+      this.notifier.notify("error",error.error.message);
+    })
+  }
   setImageRoom(idRoom, files){
     this.restHotel.setImageRoom(idRoom,[],files,this.token, 'image')
     .then((res:any)=>{

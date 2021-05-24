@@ -11,16 +11,19 @@ export class HomeComponent implements OnInit {
   private readonly notifier;
   public hotels:[];
   uri;
-  
-  public best:[];
+  public user;
+
+  public best;
 
   constructor(private restHotel:RestHotelService,private notifierService:NotifierService) { 
     this.notifier = notifierService;
+    
+    this.getBest();
     this.uri = CONNECTION.URI;
   }
 
   ngOnInit(): void {
-    this.getHotels()
+    this.getHotels();
     this.getBest();
     this.getHotelsHome();
   }
@@ -29,7 +32,6 @@ export class HomeComponent implements OnInit {
     this.restHotel.best3Hotel().subscribe((res:any)=>{
       if(res.hotelFind){
         this.hotels = res.hotelFind;
-        console.log(this.hotels);
       }else{
         this.notifier.notify("error",res.message);
       }
@@ -62,5 +64,8 @@ export class HomeComponent implements OnInit {
     }, error=>{
       this.notifier.notify("error",error.error.message);
     })
+  }
+  getUser(){
+    this.user = JSON.parse(localStorage.getItem("user"))
   }
 }

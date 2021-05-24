@@ -24,7 +24,7 @@ export class EventosAdminComponent implements OnInit, DoCheck {
     this.user = restUser.getUser();
     this.featureSelected = new Feautures('','','','','','','',null);
     this.uri = CONNECTION.URI;
-    this.hotel = new Hotel('','',null,'','','','',null,null,null,null);
+    this.hotel = new Hotel('','',null,'','','','',null,null,null,null,null);
     this.getHotel();
     this.notifier = notifierService;
   }
