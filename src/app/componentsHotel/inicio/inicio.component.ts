@@ -13,17 +13,21 @@ export class InicioComponent implements OnInit, DoCheck {
   public invoiceFac:[];
   public available;
   public reservations:[];
+  public features:[];
   public guest;
   public hotel;
   public search;
+  public rooms:[]= JSON.parse(localStorage.getItem("rooms"));
   public readonly notifier;
   constructor(private restIvoice: RestInvoicesService,restNotifier:NotifierService) { 
       this.notifier = restNotifier;
+      this.getRooms();
       this.getHotel();
   }
 
   ngDoCheck(){
     this.getInvoices();
+    this.getRooms();
   }
   ngOnInit(): void {
     this.getReservationCount();
@@ -33,6 +37,7 @@ export class InicioComponent implements OnInit, DoCheck {
     this.getRerservations();
     this.getHotel();
     this.getInvoiceByHotel();
+    this.getRooms();
   }
   getReservationCount(){
     this.reservCount = localStorage.getItem("reservationCount");
@@ -55,6 +60,7 @@ export class InicioComponent implements OnInit, DoCheck {
     this.reservations = JSON.parse(localStorage.getItem("reservationsHotel"));
   }
 
+
   payInvoice(idInvoice, idUser){
     this.restIvoice.payInvoice(idInvoice,idUser).subscribe((res:any)=>{
       if(res.invoiceUpdate){
@@ -68,6 +74,10 @@ export class InicioComponent implements OnInit, DoCheck {
       this.notifier.notify("error", error.error.message);
     })
 
+  }
+
+  getRooms(){
+    this.rooms = JSON.parse(localStorage.getItem("rooms"));
   }
 
   getInvoiceByHotel(){
