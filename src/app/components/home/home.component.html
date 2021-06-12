@@ -8,63 +8,50 @@
     </div>
         <div class="w-100">
             <div class="wrapper fadeInDown">
-                <div id="formContent" class="col-lg-9">
-                <h2 class="titulo2">Busca tu mejor opción</h2>
-                <form>
-                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Destino">
-                    <div class="d-flex" style="width: 85%; margin: auto;">
-                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Fecha de llegada">
-                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Fecha de Salida">
-                    </div>
-                    <div class="d-flex" style="width: 85%; margin: auto;">
-                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="No. Personas">
-                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Presupuesto">
-                    </div>
-                    
-                    <input type="submit" class="fadeIn fourth" value="Buscar">
-                </form>
-                </div>
+               
             </div>
         </div>
         <div class="mt-4 text-center color">
-            <h2>Los más Recomendados</h2>
+            <h2>El Hotel más solicitado</h2>
         </div>
-        
-        <div id="formContent" style="align-items: center; justify-content: center;margin: auto;" class="col-lg-9 row">
-            <div class="col-lg-6">
-                <img width="300" class="img-fluid" src="../../../assets/acapulco-3605307_1920.jpg">
+        <div class="wrapper" >
+            <div id="formContent"  class="col-lg-9 row justify-content-center pt-2">
+                <div class="col-lg-6 row" style="align-items:center;">
+                    <img width="300" class="img-fluid" src="{{uri+'getImage/'+best.images[0].image}}">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mt-4">{{best.name}}</h2>
+                    <p class="Disponible" *ngIf="best.rooms.length">Habitaciones Disponibles</p>
+                    <p class="noDisponible" *ngIf="!best.rooms.length">Habitaciones No Disponibles</p>
+                    <p class="text-muted text-left" *ngIf="best.rooms.length">Precios de: {{best.rooms[0].priceRoom}}</p>
+                    <p class="text-muted text-left">{{best.description}}</p>
+                    <p class="text-muted text-left">{{best.descAddress}}</p>
+                    <input type="submit"  routerLink="HotelInicio/{{best._id}}" class="fadeIn fourth" value="Ver más">
+                </div>
             </div>
-            <div class="col-lg-6">
-                <h2 class="mt-4">Hotel Barceló</h2>
-                <p class="Disponible">Habitaciones Disponibles</p>
-                <p class="text-muted text-left">Habitaciones desde Q2000.00</p>
-                <p class="text-muted text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, 
-                    voluptates dolorem! Praesentium ad commodi harum amet dolores explicabo temporibus magni,</p>
-                <input type="submit" class="fadeIn fourth" value="Ver más">
-            </div>
-        </div>
-        <div class="col-lg-9 justify-content-center m-auto" style="margin-top:8px !important;">
-            <a class="verMas">Ver más </a><i style="color: #C62828 !important;" class="fas fa-arrow-right ml-2"></i>
-        </div>
+        </div> 
         <br>
         <app-img-footer></app-img-footer>
         <div class="mt-4 text-center color">
-            <h2>Super Ofertas</h2>
+            <h2>Los más Recomendados</h2>
+        </div>
+        <div class="wrapper">
+            <div id="formContent" *ngFor="let optionHotel of hotels" style="align-items: center; justify-content: center;margin: auto;" class="col-lg-9 row justify-content-center pt-2 mb-2">
+                <div class="col-lg-6">
+                    <img width="300" class="img-fluid" src="{{uri+'getImage/'+optionHotel.images[0].image}}">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mt-4">{{optionHotel.name}}</h2>
+                    <p class="Disponible" *ngIf="optionHotel.rooms.length">Habitaciones Disponibles</p>
+                    <p class="noDisponible" *ngIf="!optionHotel.rooms.length">Habitaciones No Disponibles</p>
+                    <p class="text-muted text-left" *ngIf="optionHotel.rooms.length">Precios de: {{optionHotel.rooms[0].priceRoom}}</p>
+                    <p class="text-muted text-left">{{optionHotel.description}}</p>
+                    <p class="text-muted text-left">{{optionHotel.descAddress}}</p>
+                    <input type="submit" routerLink="HotelInicio/{{optionHotel._id}}" class="fadeIn fourth" value="Ver más">
+                </div>
+            </div>
         </div>
         
-        <div id="formContent" style="align-items: center; justify-content: center;margin: auto;" class="col-lg-9 row">
-            <div class="col-lg-6">
-                <img width="300" class="img-fluid" src="../../../assets/acapulco-3605307_1920.jpg">
-            </div>
-            <div class="col-lg-6">
-                <h2 class="mt-4">Hotel Barceló</h2>
-                <p class="Disponible">Habitaciones Disponibles</p>
-                <p class="text-muted text-left">Habitaciones desde Q2000.00</p>
-                <p class="text-muted text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, 
-                    voluptates dolorem! Praesentium ad commodi harum amet dolores explicabo temporibus magni,</p>
-                <input type="submit" class="fadeIn fourth" value="Ver más">
-            </div>
-        </div>
         <div class="col-lg-9 justify-content-center m-auto" style="margin-top:8px !important;">
             <a class="verMas">Ver más </a><i style="color: #C62828 !important;" class="fas fa-arrow-right ml-2"></i>
         </div>
@@ -72,4 +59,4 @@
         
         
 </body>
-<br>
+<notifier-container></notifier-container>
