@@ -47,12 +47,14 @@
                           <p class="card-text text-success">precio</p>
                         </div>
                     </div>
-                    <div class="col-lg-12 row text-center" *ngFor="let resrv1 of reservations" >
-                      <div class="col-lg-6" *ngIf ="option.reservations[0] == resrv1._id">
-                        <p class="card-text">{{resrv1.rooms[0].nameRoom}}</p>
+                    <div class="col-lg-12 m-0 row text-center" *ngFor="let resrv1 of reservations" >
+                      <div  class="col-lg-12 row" *ngFor="let room of rooms">
+                        <div class="col-lg-6" *ngIf ="resrv1.rooms[0] == room._id && resrv1._id == option.reservations[0]">
+                          <p class="card-text">{{room.nameRoom}}</p>
                       </div>
-                      <div class="col-lg-6">
-                        <p class="card-text">{{resrv1.rooms[0].priceRoom}}</p>
+                        <div class="col-lg-6"   *ngIf ="resrv1.rooms[0] == room._id && resrv1._id == option.reservations[0]">
+                          <p class="card-text">{{room.priceRoom}}</p>
+                        </div>
                       </div>
                   </div>
                     <div class="col-lg-12 row text-center">

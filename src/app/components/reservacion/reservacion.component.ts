@@ -89,7 +89,6 @@ export class ReservacionComponent implements OnInit {
    updateHotel(){
      this.restReservation.updateHotel(this.hotel._id).subscribe((res:any)=>{
        if(res.hotelUpdated){
-
        }else{
         this.notifier.notify("warning",res.message);
        }

@@ -61,8 +61,6 @@ export class RestReservationService {
         'Content-Type': 'application/json',
         'Authorization': this.getToken()
       })
-      console.log(idHotel,idRoom,idUser,reservation);
-      console.log(this.uri+'saveReservation/'+idUser+'/'+idHotel+'/'+idRoom)
       return this.http.post(this.uri+'saveReservation/'+idUser+'/'+idHotel+'/'+idRoom,params,{headers:headers})
       .pipe(map(this.extractData))
   }
@@ -82,7 +80,6 @@ export class RestReservationService {
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     })
-    console.log(this.uri+'countReservByHotel/'+hotelId)
     return this.http.get(this.uri+'countReservByHotel/'+hotelId,{headers:headers})
     .pipe(map(this.extractData));
   }
